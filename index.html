@@ -6,192 +6,551 @@
 <title>Hi Mum 💛</title>
 
 <style>
-:root{
-  --bg:#0b0f14;
-  --card: rgba(255,255,255,.06);
-  --border: rgba(255,255,255,.12);
-  --text:#f3f6ff;
-  --muted: rgba(255,255,255,.72);
-  --accent:#ffd86b;
-  --accent2:#7aa2ff;
-  --accent3:#ff9ac6;
-}
+  :root{
+    --bg:#0b0f14;
+    --card: rgba(255,255,255,.06);
+    --border: rgba(255,255,255,.12);
+    --text:#f3f6ff;
+    --muted: rgba(255,255,255,.72);
+    --accent:#ffd86b;
+    --accent2:#7aa2ff;
+    --accent3:#ff9ac6;
+  }
 
-*{box-sizing:border-box}
+  *{ box-sizing:border-box; }
 
-body{
-  margin:0;
-  font-family: system-ui, sans-serif;
-  color: var(--text);
-  background: radial-gradient(circle at 20% 20%, #1a1f2b, #0b0f14);
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  padding:18px;
-}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(900px 600px at 15% 10%, rgba(255,216,107,.18), transparent 62%),
+      radial-gradient(900px 600px at 85% 18%, rgba(122,162,255,.16), transparent 62%),
+      radial-gradient(900px 600px at 55% 85%, rgba(255,154,198,.10), transparent 62%),
+      var(--bg);
+    min-height:100dvh;
+    display:grid;
+    place-items:center;
+    padding:18px;
+  }
 
-.wrap{ width:min(700px,100%); }
+  .wrap{ width:min(760px,100%); }
 
-.card{
-  background: var(--card);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:22px;
-  backdrop-filter: blur(10px);
-}
+  .card{
+    background: var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:22px;
+    box-shadow: 0 18px 42px rgba(0,0,0,.35);
+    backdrop-filter: blur(10px);
+  }
 
-h1{
-  font-size: clamp(28px,6vw,42px);
-  margin-bottom:10px;
-}
+  .top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom: 10px;
+  }
 
-p{
-  color:var(--muted);
-  font-size:16px;
-  line-height:1.6;
-}
+  .badge{
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.14);
+    padding: 8px 10px;
+    border-radius: 999px;
+  }
 
-.gallery{
-  display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
-  gap:12px;
-  margin-top:18px;
-}
+  .steam{
+    font-size: 24px;
+    filter: drop-shadow(0 10px 16px rgba(255,216,107,.18));
+    animation: float 2.8s ease-in-out infinite;
+    user-select:none;
+  }
 
-.gallery img{
-  width:100%;
-  height:110px;
-  object-fit:cover;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.1);
-  transition: transform .2s ease;
-}
+  @keyframes float{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-6px); }
+  }
 
-.gallery img:hover{
-  transform:scale(1.05);
-}
+  h1{
+    margin: 8px 0 8px;
+    font-size: clamp(26px, 5.6vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
 
-.btnRow{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:18px;
-}
+  p{
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.65;
+  }
 
-button{
-  padding:14px;
-  border-radius:14px;
-  border:0;
-  font-weight:700;
-  cursor:pointer;
-}
+  .grid{
+    display:grid;
+    gap: 12px;
+    margin-top: 12px;
+  }
 
-.btnA{
-  background: linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#000;
-}
+  .panel{
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+    padding: 14px;
+    text-align:left;
+  }
 
-.btnB{
-  background: rgba(255,255,255,.1);
-  color:white;
-  border:1px solid rgba(255,255,255,.2);
-}
+  .panelTitle{
+    font-weight: 800;
+    margin-bottom: 6px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 8px;
+    flex-wrap:wrap;
+  }
 
-.msg{
-  display:none;
-  margin-top:14px;
-  padding:14px;
-  border-radius:14px;
-  background:rgba(255,255,255,.05);
-}
+  .hint{
+    font-size: 13px;
+    color: rgba(255,255,255,.62);
+  }
 
-.footer{
-  margin-top:12px;
-  text-align:center;
-  font-size:12px;
-  opacity:.6;
-}
+  .btnRow{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  button{
+    width:100%;
+    border: 0;
+    border-radius: 14px;
+    padding: 14px 14px;
+    font-weight: 800;
+    font-size: 15px;
+    cursor:pointer;
+    min-height: 48px;
+    transition: transform .06s ease, filter .2s ease;
+  }
+
+  button:active{ transform: scale(.99); }
+
+  .btnA{
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #0b0f14;
+  }
+
+  .btnB{
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.14);
+    color: rgba(255,255,255,.92);
+  }
+
+  .msg{
+    display:none;
+    margin-top: 10px;
+    padding: 12px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    color: rgba(255,255,255,.88);
+    line-height: 1.6;
+  }
+
+  /* --- Gallery --- */
+  .gallery{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .tile{
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.04);
+    min-height: 120px;
+  }
+
+  .tile img{
+    width:100%;
+    height: 130px;
+    object-fit: cover;
+    display:block;
+    transform: scale(1.02);
+    transition: transform .25s ease;
+  }
+
+  .tile:hover img{ transform: scale(1.08); }
+
+  .cap{
+    position:absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: rgba(255,255,255,.92);
+    background: rgba(0,0,0,.40);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(8px);
+  }
+
+  .footer{
+    margin-top: 12px;
+    text-align:center;
+    color: rgba(255,255,255,.55);
+    font-size: 12px;
+  }
+
+  @media (max-width: 420px){
+    .btnRow{ grid-template-columns: 1fr; }
+    .tile img{ height: 120px; }
+  }
+
+  /* --- Easter egg modal --- */
+  .overlay{
+    position: fixed;
+    inset: 0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding: 18px;
+    background: rgba(0,0,0,.55);
+    z-index: 9999;
+  }
+
+  .modal{
+    width: min(520px, 100%);
+    background: rgba(14,17,23,.92);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: 0 18px 44px rgba(0,0,0,.55);
+  }
+
+  .modal h2{
+    margin: 0 0 8px;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .modal p{
+    margin: 0 0 12px;
+    color: rgba(255,255,255,.78);
+  }
+
+  .modalActions{
+    display:flex;
+    gap:10px;
+    justify-content:flex-end;
+  }
+
+  .miniBtn{
+    border-radius: 12px;
+    padding: 10px 12px;
+    min-height: 40px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor:pointer;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.08);
+    color: rgba(255,255,255,.92);
+  }
+
+  .miniBtnPrimary{
+    border: 0;
+    background: linear-gradient(135deg, var(--accent3), var(--accent2));
+    color:#0b0f14;
+  }
+
+  /* Hidden hint text (tap multiple times) */
+  .secretHint{
+    opacity: .55;
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: center;
+    user-select:none;
+  }
 </style>
 </head>
 
 <body>
-<div class="wrap">
-<div class="card">
+  <div class="wrap">
+    <div class="card">
+      <div class="top">
+        <div class="badge">a tiny hello site</div>
+        <div class="steam" aria-hidden="true">🍲✨</div>
+      </div>
 
-<h1>Hi Mum 💛</h1>
-<p>
-Just dropping in to say hello.  
-Also… what’s cooking today? 👀
-</p>
+      <h1 id="title">Hi Mum 💛</h1>
+      <p>
+        Just dropping in to say hello.
+        Also… <strong>what’s cooking today?</strong> 👀
+      </p>
 
-<!-- ⭐ INGREDIENT PHOTO GALLERY -->
-<div class="gallery">
+      <div class="grid">
+        <div class="panel">
+          <div class="panelTitle">
+            <span>Wholesome ingredients corner</span>
+            <span class="hint">(tap a tile for captions)</span>
+          </div>
 
-<img src="https://source.unsplash.com/300x300/?eggplant" />
-<img src="https://source.unsplash.com/300x300/?capsicum" />
-<img src="https://source.unsplash.com/300x300/?eggs" />
-<img src="https://source.unsplash.com/300x300/?cumin" />
-<img src="https://source.unsplash.com/300x300/?coriander" />
-<img src="https://source.unsplash.com/300x300/?mint-leaves" />
-<img src="https://source.unsplash.com/300x300/?basil" />
-<img src="https://source.unsplash.com/300x300/?mozzarella" />
-<img src="https://source.unsplash.com/300x300/?carrot" />
-<img src="https://source.unsplash.com/300x300/?cauliflower" />
-<img src="https://source.unsplash.com/300x300/?broccoli" />
-<img src="https://source.unsplash.com/300x300/?olive-oil" />
-<img src="https://source.unsplash.com/300x300/?fresh-fruit" />
-<img src="https://source.unsplash.com/300x300/?fresh-vegetables" />
+          <!-- Gallery with captions (including your 3 lines) -->
+          <div class="gallery" aria-label="Ingredient photo gallery">
 
-</div>
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1604908176997-431a2bcb1c7a?auto=format&fit=crop&w=600&q=80"
+                alt="Eggplant" />
+              <div class="cap">🥕 Your healthy veggie lectures</div>
+            </div>
 
-<div class="btnRow">
-<button class="btnA" id="spinBtn">Guess what Mum is cooking 🍳</button>
-<button class="btnB" id="askBtn">Ask Mum 💬</button>
-</div>
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=600&q=80"
+                alt="Capsicum" />
+              <div class="cap">🫑 Capsicum: the “we’re being healthy” flex</div>
+            </div>
 
-<div class="msg" id="msgBox"></div>
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=600&q=80"
+                alt="Eggs" />
+              <div class="cap">🥚 Eggs: reliable, comforting, always understood</div>
+            </div>
 
-<div class="footer">
-Made with love, curiosity, and hunger 😌
-</div>
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80"
+                alt="Cumin" />
+              <div class="cap">🌿 Herbs = mum magic</div>
+            </div>
 
-</div>
-</div>
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1599909533690-7a0d1f4a08d4?auto=format&fit=crop&w=600&q=80"
+                alt="Coriander" />
+              <div class="cap">🌿 Coriander: the “it’s not done yet” finishing move</div>
+            </div>
+
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=600&q=80"
+                alt="Mint" />
+              <div class="cap">🌿 Mint: instant freshness + 10/10 vibes</div>
+            </div>
+
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?auto=format&fit=crop&w=600&q=80"
+                alt="Basil" />
+              <div class="cap">🌿 Basil: calm, classy, “we are thriving” energy</div>
+            </div>
+
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1589881133829-4f72a44dcd87?auto=format&fit=crop&w=600&q=80"
+                alt="Mozzarella" />
+              <div class="cap">🧀 Cheese = emotional support food</div>
+            </div>
+
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=600&q=80"
+                alt="Carrot" />
+              <div class="cap">🥕 Carrot: crunchy wellness propaganda (I comply)</div>
+            </div>
+
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1615484477778-ca3b77940c25?auto=format&fit=crop&w=600&q=80"
+                alt="Cauliflower" />
+              <div class="cap">🥦 Cauliflower: secretly versatile, quietly iconic</div>
+            </div>
+
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1582515073490-dc66b75b7f47?auto=format&fit=crop&w=600&q=80"
+                alt="Broccoli" />
+              <div class="cap">🥦 Broccoli: the stern auntie of vegetables</div>
+            </div>
+
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80"
+                alt="Olive oil" />
+              <div class="cap">🫒 Olive oil: “just a little” (it’s never a little)</div>
+            </div>
+
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"
+                alt="Fresh fruit" />
+              <div class="cap">🍓 Fruits: the sweet ending you pretend you didn’t plan</div>
+            </div>
+
+            <div class="tile" tabindex="0">
+              <img loading="lazy" referrerpolicy="no-referrer"
+                src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80"
+                alt="Mixed vegetables" />
+              <div class="cap">🥗 Whole foods: the love language is nutrition</div>
+            </div>
+
+          </div>
+
+          <div class="secretHint" id="secretHint">ps: try tapping “Hi Mum 💛” a few times 👀</div>
+        </div>
+
+        <div class="panel">
+          <div class="panelTitle">
+            <span>Quick message buttons</span>
+            <span class="hint">(warm + playful)</span>
+          </div>
+
+          <p style="margin:0 0 10px;">
+            If you reply, I’ll happily take:
+            <br>• a photo
+            <br>• a voice note
+            <br>• or a very dramatic description 😌
+          </p>
+
+          <div class="btnRow">
+            <button class="btnA" id="spinBtn">Guess what Mum is cooking 🍳</button>
+            <button class="btnB" id="askBtn">Ask Mum 💬</button>
+          </div>
+
+          <div class="msg" id="msgBox"></div>
+        </div>
+      </div>
+
+      <div class="footer">Made with ✨, curiosity, and hunger</div>
+    </div>
+  </div>
+
+  <!-- Easter Egg Modal -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="eggTitle">
+    <div class="modal">
+      <h2 id="eggTitle">Thank you, Mum 💛</h2>
+      <p>
+        Just a little hidden note:
+        <br><br>
+        Thank you for the food, the care, the reminders to eat vegetables,
+        and for making “home” feel like something warm.
+        <br><br>
+        Love you lots 🫶
+      </p>
+      <div class="modalActions">
+        <button class="miniBtn" id="closeEggBtn">Close</button>
+        <button class="miniBtn miniBtnPrimary" id="heartBtn">Send a 💛</button>
+      </div>
+    </div>
+  </div>
 
 <script>
-const guesses=[
-  "Something comforting and warm 🍲",
-  "A veggie masterpiece 🥕",
-  "A curry situation 🍛",
-  "Something healthy but secretly delicious 😌",
-  "A fridge-leftovers miracle 👩‍🍳"
-];
+  // Personalise these if you want:
+  const guesses = [
+    "Something comforting and warm 🍲",
+    "A veggie masterpiece 🥕",
+    "A curry situation 🍛",
+    "Something healthy but secretly delicious 😌",
+    "A fridge-leftovers miracle 👩‍🍳",
+    "A ‘simple’ dish that is not simple at all ✨"
+  ];
 
-const askLines=[
-  "Mum… what’s cooking today? 👀",
-  "Chef Mum, what’s on the menu? 🍳",
-  "Can I get a photo preview please 😌",
-  "Drop the dish name + drama details 💬"
-];
+  const askLines = [
+    "Mum… what’s cooking today? 👀",
+    "Chef Mum, what’s on the menu? 🍳",
+    "Can I get a photo preview please 😌",
+    "Drop the dish name + drama details 💬",
+    "Are we in a soup era today? 🍲"
+  ];
 
-function pick(arr){
-  return arr[Math.floor(Math.random()*arr.length)];
-}
+  function pick(arr){
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
 
-const spinBtn=document.getElementById("spinBtn");
-const askBtn=document.getElementById("askBtn");
-const msgBox=document.getElementById("msgBox");
+  const spinBtn = document.getElementById("spinBtn");
+  const askBtn  = document.getElementById("askBtn");
+  const msgBox  = document.getElementById("msgBox");
 
-spinBtn.onclick=()=>{
-  msgBox.style.display="block";
-  msgBox.textContent=pick(guesses);
-}
+  function showMsg(text){
+    msgBox.style.display = "block";
+    msgBox.textContent = text;
+  }
 
-askBtn.onclick=()=>{
-  msgBox.style.display="block";
-  msgBox.textContent=pick(askLines);
-}
+  spinBtn.addEventListener("click", () => {
+    showMsg(pick(guesses) + "  (I’m claiming one (1) photo if I’m right 😌📸)");
+  });
+
+  askBtn.addEventListener("click", () => {
+    showMsg(pick(askLines));
+  });
+
+  // Easter egg: tap the title 7 times to reveal
+  const title = document.getElementById("title");
+  const overlay = document.getElementById("overlay");
+  const closeEggBtn = document.getElementById("closeEggBtn");
+  const heartBtn = document.getElementById("heartBtn");
+
+  let taps = 0;
+  let tapTimer = null;
+
+  function openEgg(){
+    overlay.style.display = "flex";
+    // optional: copy a sweet line to clipboard (if supported)
+    // navigator.clipboard?.writeText("Hi Mum 💛 Thank you for everything.");
+  }
+
+  function closeEgg(){
+    overlay.style.display = "none";
+  }
+
+  title.addEventListener("click", () => {
+    taps++;
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => { taps = 0; }, 900);
+
+    if (taps >= 7){
+      taps = 0;
+      openEgg();
+    }
+  });
+
+  closeEggBtn.addEventListener("click", closeEgg);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeEgg();
+  });
+
+  heartBtn.addEventListener("click", () => {
+    showMsg("Sending a 💛 to Mum… done.");
+    closeEgg();
+  });
+
+  // Accessibility: Escape closes modal
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.style.display === "flex"){
+      closeEgg();
+    }
+  });
+
+  // Make captions feel tappable on mobile:
+  // tapping a tile briefly “highlights” it
+  document.querySelectorAll(".tile").forEach(tile => {
+    tile.addEventListener("click", () => {
+      tile.style.filter = "brightness(1.12)";
+      setTimeout(() => tile.style.filter = "none", 220);
+    });
+  });
 </script>
-
 </body>
 </html>
