@@ -203,5 +203,315 @@
     .btn2{
       border:1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.07);
-      color: var
+      color: var(--text);
+    }
+    .btn:active, .btn2:active{ transform: scale(.99); }
 
+    .footer{
+      margin-top:14px;
+      text-align:center;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+    }
+
+    /* Easter egg toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      background: rgba(15, 22, 35, .92);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 14px;
+      box-shadow: 0 16px 34px rgba(0,0,0,.35);
+      max-width: min(540px, calc(100% - 24px));
+      display:none;
+      z-index: 50;
+    }
+    .toast strong{ color: var(--good); }
+    .toast.show{ display:block; animation: pop .18s ease-out; }
+    @keyframes pop{ from{ transform: translateX(-50%) scale(.98); opacity:.4;} to{ transform: translateX(-50%) scale(1); opacity:1;} }
+
+    @media (max-width: 780px){
+      .card{ grid-column: span 12; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="topRow">
+        <div class="badge">tiny page • big mum energy</div>
+        <!-- Click this chef chip 5 times for the hidden thank-you -->
+        <div class="chef" id="chefEgg" title="(psst) tap me a few times">
+          <span aria-hidden="true">👩‍🍳</span>
+          <span style="color:var(--muted);font-size:13px;">Mum magic mode</span>
+        </div>
+      </div>
+
+      <h1>Hi Mum 💛 What’s cooking today?</h1>
+      <p class="sub">
+        Just a little hello from me — and a gentle request for food updates (and maybe a photo 👀).
+      </p>
+
+      <div class="callout">
+        <div class="bubble">
+          <div class="bubbleTitle">🥕 Your healthy veggie lectures</div>
+          <p>I hear you in my head every time I buy “just one more” vegetable.</p>
+        </div>
+
+        <div class="bubble">
+          <div class="bubbleTitle">🧀 Cheese = emotional support food</div>
+          <p>This is not negotiable. This is a lifestyle.</p>
+        </div>
+
+        <div class="bubble">
+          <div class="bubbleTitle">🌿 Herbs = mum magic</div>
+          <p>Somehow you throw in herbs and the whole house smells like comfort.</p>
+        </div>
+      </div>
+
+      <div class="grid" aria-label="Ingredients gallery">
+        <!-- EGGPLANT (FIXED) -->
+        <div class="card">
+          <div class="imgWrap">
+            <img
+              src="https://images.unsplash.com/photo-1722121673290-464be912ff6e?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=1600"
+              alt="Eggplant"
+              loading="lazy"
+            />
+          </div>
+          <div class="cardBody">
+            <div class="cardTitle">
+              <span>🍆 Eggplant</span>
+              <span class="chip">roast / stir-fry</span>
+            </div>
+            <div class="mini">Okay but… what are you making with eggplant today?</div>
+            <div class="chips">
+              <div class="chip">garlic-ish vibes</div>
+              <div class="chip">smoky</div>
+              <div class="chip">mum-approved</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CAPSICUM -->
+        <div class="card">
+          <div class="imgWrap">
+            <img
+              src="https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&fm=jpg&q=60&w=1600"
+              alt="Capsicum / bell pepper"
+              loading="lazy"
+            />
+          </div>
+          <div class="cardBody">
+            <div class="cardTitle">
+              <span>🫑 Capsicum</span>
+              <span class="chip">crunchy queen</span>
+            </div>
+            <div class="mini">If it’s colourful, it’s basically a health halo.</div>
+            <div class="chips">
+              <div class="chip">sweet</div>
+              <div class="chip">fresh</div>
+              <div class="chip">no excuses</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EGGS -->
+        <div class="card">
+          <div class="imgWrap">
+            <img
+              src="https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?auto=format&fit=crop&fm=jpg&q=60&w=1600"
+              alt="Eggs"
+              loading="lazy"
+            />
+          </div>
+          <div class="cardBody">
+            <div class="cardTitle">
+              <span>🥚 Eggs</span>
+              <span class="chip">protein peace</span>
+            </div>
+            <div class="mini">Breakfast? Lunch? Emergency dinner? Eggs never disappoint.</div>
+            <div class="chips">
+              <div class="chip">omelette</div>
+              <div class="chip">soft-boil</div>
+              <div class="chip">mum classic</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CORIANDER (FIXED) -->
+        <div class="card">
+          <div class="imgWrap">
+            <img
+              src="https://images.pexels.com/photos/6633111/pexels-photo-6633111.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Coriander / cilantro"
+              loading="lazy"
+            />
+          </div>
+          <div class="cardBody">
+            <div class="cardTitle">
+              <span>🌿 Coriander</span>
+              <span class="chip">finishing move</span>
+            </div>
+            <div class="mini">You add this and suddenly it’s “restaurant standard”.</div>
+            <div class="chips">
+              <div class="chip">fresh</div>
+              <div class="chip">bright</div>
+              <div class="chip">mum magic</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOZZARELLA (FIXED) -->
+        <div class="card">
+          <div class="imgWrap">
+            <img
+              src="https://images.pexels.com/photos/20184723/pexels-photo-20184723.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Mozzarella"
+              loading="lazy"
+            />
+          </div>
+          <div class="cardBody">
+            <div class="cardTitle">
+              <span>🧀 Mozzarella</span>
+              <span class="chip">emotional support</span>
+            </div>
+            <div class="mini">Cheese solves problems. Not all, but enough.</div>
+            <div class="chips">
+              <div class="chip">melty</div>
+              <div class="chip">creamy</div>
+              <div class="chip">joy</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BROCCOLI (FIXED) -->
+        <div class="card">
+          <div class="imgWrap">
+            <img
+              src="https://images.unsplash.com/photo-1737043241069-f95f460073b2?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=1600"
+              alt="Broccoli"
+              loading="lazy"
+            />
+          </div>
+          <div class="cardBody">
+            <div class="cardTitle">
+              <span>🥦 Broccoli</span>
+              <span class="chip">green discipline</span>
+            </div>
+            <div class="mini">The vegetable that says: “I care about you.”</div>
+            <div class="chips">
+              <div class="chip">steam</div>
+              <div class="chip">stir-fry</div>
+              <div class="chip">soup</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OLIVE OIL -->
+        <div class="card">
+          <div class="imgWrap">
+            <img
+              src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&fm=jpg&q=60&w=1600"
+              alt="Olive oil"
+              loading="lazy"
+            />
+          </div>
+          <div class="cardBody">
+            <div class="cardTitle">
+              <span>🫒 Olive oil</span>
+              <span class="chip">the base</span>
+            </div>
+            <div class="mini">A little drizzle and suddenly I feel like an adult.</div>
+            <div class="chips">
+              <div class="chip">smooth</div>
+              <div class="chip">fragrant</div>
+              <div class="chip">mum-approved</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRUIT -->
+        <div class="card">
+          <div class="imgWrap">
+            <img
+              src="https://images.unsplash.com/photo-1542444459-db47a2e4b25f?auto=format&fit=crop&fm=jpg&q=60&w=1600"
+              alt="Fresh fruit"
+              loading="lazy"
+            />
+          </div>
+          <div class="cardBody">
+            <div class="cardTitle">
+              <span>🍓 Fruits</span>
+              <span class="chip">sweet + smart</span>
+            </div>
+            <div class="mini">If there’s fruit at home, I’m basically thriving.</div>
+            <div class="chips">
+              <div class="chip">fresh</div>
+              <div class="chip">colourful</div>
+              <div class="chip">happy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" id="askBtn">📸 Send me a food pic</button>
+        <button class="btn btn2" id="whatBtn">🍲 What are you cooking?</button>
+        <button class="btn btn2" id="loveBtn">💛 Just saying I love you</button>
+      </div>
+
+      <div class="footer">Made with 🥕🧀🌿 (and a tiny bit of chaos)</div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Quick toast helper
+    const toast = document.getElementById("toast");
+    let toastTimer = null;
+
+    function showToast(html){
+      toast.innerHTML = html;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    // Button actions (you can replace these with WhatsApp links later)
+    document.getElementById("askBtn").addEventListener("click", () => {
+      showToast("📸 <strong>Request sent:</strong> one food photo, please (no pressure… but also yes pressure).");
+    });
+
+    document.getElementById("whatBtn").addEventListener("click", () => {
+      showToast("🍲 <strong>Question:</strong> what’s cooking today? And can I have the recipe 👀");
+    });
+
+    document.getElementById("loveBtn").addEventListener("click", () => {
+      showToast("💛 <strong>Message:</strong> hi mum. I love you. That’s all. 🥺");
+    });
+
+    // Hidden “thank you mum” easter egg:
+    // Tap the chef chip 5 times.
+    const chefEgg = document.getElementById("chefEgg");
+    let taps = 0;
+
+    chefEgg.addEventListener("click", () => {
+      taps++;
+      if (taps === 5){
+        showToast("🥹 <strong>Easter egg unlocked:</strong> Thank you mum — for the food, the love, and the lectures. 💛");
+        taps = 0; // reset so you can do it again
+      } else {
+        // tiny hint, subtle
+        showToast("👩‍🍳 Mum magic level: " + taps + "/5");
+      }
+    });
+  </script>
+</body>
+</html>
