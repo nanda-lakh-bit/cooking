@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hi Mum 💛</title>
+
+<style>
+:root{
+  --bg:#0b0f14;
+  --card: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.12);
+  --text:#f3f6ff;
+  --muted: rgba(255,255,255,.72);
+  --accent:#ffd86b;
+  --accent2:#7aa2ff;
+  --accent3:#ff9ac6;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 20% 20%, #1a1f2b, #0b0f14);
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:18px;
+}
+
+.wrap{ width:min(700px,100%); }
+
+.card{
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:22px;
+  backdrop-filter: blur(10px);
+}
+
+h1{
+  font-size: clamp(28px,6vw,42px);
+  margin-bottom:10px;
+}
+
+p{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.6;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
+  gap:12px;
+  margin-top:18px;
+}
+
+.gallery img{
+  width:100%;
+  height:110px;
+  object-fit:cover;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.1);
+  transition: transform .2s ease;
+}
+
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+.btnRow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:18px;
+}
+
+button{
+  padding:14px;
+  border-radius:14px;
+  border:0;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.btnA{
+  background: linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#000;
+}
+
+.btnB{
+  background: rgba(255,255,255,.1);
+  color:white;
+  border:1px solid rgba(255,255,255,.2);
+}
+
+.msg{
+  display:none;
+  margin-top:14px;
+  padding:14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.05);
+}
+
+.footer{
+  margin-top:12px;
+  text-align:center;
+  font-size:12px;
+  opacity:.6;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<div class="card">
+
+<h1>Hi Mum 💛</h1>
+<p>
+Just dropping in to say hello.  
+Also… what’s cooking today? 👀
+</p>
+
+<!-- ⭐ INGREDIENT PHOTO GALLERY -->
+<div class="gallery">
+
+<img src="https://source.unsplash.com/300x300/?eggplant" />
+<img src="https://source.unsplash.com/300x300/?capsicum" />
+<img src="https://source.unsplash.com/300x300/?eggs" />
+<img src="https://source.unsplash.com/300x300/?cumin" />
+<img src="https://source.unsplash.com/300x300/?coriander" />
+<img src="https://source.unsplash.com/300x300/?mint-leaves" />
+<img src="https://source.unsplash.com/300x300/?basil" />
+<img src="https://source.unsplash.com/300x300/?mozzarella" />
+<img src="https://source.unsplash.com/300x300/?carrot" />
+<img src="https://source.unsplash.com/300x300/?cauliflower" />
+<img src="https://source.unsplash.com/300x300/?broccoli" />
+<img src="https://source.unsplash.com/300x300/?olive-oil" />
+<img src="https://source.unsplash.com/300x300/?fresh-fruit" />
+<img src="https://source.unsplash.com/300x300/?fresh-vegetables" />
+
+</div>
+
+<div class="btnRow">
+<button class="btnA" id="spinBtn">Guess what Mum is cooking 🍳</button>
+<button class="btnB" id="askBtn">Ask Mum 💬</button>
+</div>
+
+<div class="msg" id="msgBox"></div>
+
+<div class="footer">
+Made with love, curiosity, and hunger 😌
+</div>
+
+</div>
+</div>
+
+<script>
+const guesses=[
+  "Something comforting and warm 🍲",
+  "A veggie masterpiece 🥕",
+  "A curry situation 🍛",
+  "Something healthy but secretly delicious 😌",
+  "A fridge-leftovers miracle 👩‍🍳"
+];
+
+const askLines=[
+  "Mum… what’s cooking today? 👀",
+  "Chef Mum, what’s on the menu? 🍳",
+  "Can I get a photo preview please 😌",
+  "Drop the dish name + drama details 💬"
+];
+
+function pick(arr){
+  return arr[Math.floor(Math.random()*arr.length)];
+}
+
+const spinBtn=document.getElementById("spinBtn");
+const askBtn=document.getElementById("askBtn");
+const msgBox=document.getElementById("msgBox");
+
+spinBtn.onclick=()=>{
+  msgBox.style.display="block";
+  msgBox.textContent=pick(guesses);
+}
+
+askBtn.onclick=()=>{
+  msgBox.style.display="block";
+  msgBox.textContent=pick(askLines);
+}
+</script>
+
+</body>
+</html>
